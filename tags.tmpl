@@ -1,0 +1,38 @@
+{{- define "sonic_theme_paper_mod/tags" -}}
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head>
+<title>Tags - {{ .blog_title }}</title>
+{{ template "sonic_theme_paper_mod/module/head" .}}
+</head>
+
+<body class="list" id="top">
+
+{{template "sonic_theme_paper_mod/module/header" .}}
+
+<main class="main"> 
+
+<header class="page-header">
+  <h1>
+    Tags
+  </h1>
+</header>
+
+<ul class="terms-tags">
+    {{ $tags:=getAllTag }}
+    {{ range $tag:=$tags }}
+    <li>
+        <a href="{{ $tag.FullPath }}">{{ $tag.Name }}<sup><strong><sup>{{ $tag.PostCount }}</sup></strong></sup> </a>
+    </li>
+    {{end}}
+</ul>
+
+</main>
+    
+{{template "sonic_theme_paper_mod/module/footer" .}}
+
+</body>
+
+</html>
+{{end}}

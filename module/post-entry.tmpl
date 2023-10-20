@@ -1,0 +1,15 @@
+{{- define "sonic_theme_paper_mod/module/post-entry" -}}
+{{range $post:=.posts.Content}}
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>{{$post.Title}}
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>{{$post.Summary}}...</p>
+  </div>
+  <footer class="entry-footer"><span>{{unix_milli_time_format "2006-01-02 15:04:05" $post.CreateTime}}</span>  ·  {{ $post.WordCount }} words </footer>
+  <a class="entry-link" href="{{$post.FullPath}}"></a>
+</article>
+{{end}}
+{{end}}

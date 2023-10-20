@@ -1,0 +1,57 @@
+{{- define "sonic_theme_paper_mod/post" -}}
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head>
+<title>{{ .post.Title }} - {{ .blog_title }}</title>
+{{ template "sonic_theme_paper_mod/module/head" .}}
+</head>
+
+<body id="top">
+
+{{template "sonic_theme_paper_mod/module/header" .}}
+
+<main class="main">
+
+<article class="post-single">
+<h1 class="post-title"><a href="{{ .post.FullPath }}">{{ .post.Title }}</a></h1>
+<div class="post-meta">
+    <div class="post-info">
+        Create Time: {{ unix_milli_time_format "2006-01-02 15:04:05" .post.CreateTime }}  Words: {{ .post.WordCount }}
+    </div>
+</div>
+
+<div class="post-content">
+    <hr>
+    {{noescape .post.Content}}
+    <hr>
+</div>
+
+<footer class="post-footer">
+<nav class="paginav">
+    {{if .prevPost}}
+    <a class="prev" href="{{.prevPost.FullPath}}">
+        <span class="title">« Prev</span>
+        <br>
+        <span>{{.prevPost.Title}}</span>
+    </a>
+    {{end}}
+    {{if .nextPost}}
+    <a class="next" href="{{.nextPost.FullPath}}">
+        <span class="title">Next »</span>
+        <br>
+        <span>{{.nextPost.Title}}</span>
+    </a>
+    {{end}}
+</nav>
+
+</footer>
+
+</article>
+</main>
+
+{{template "sonic_theme_paper_mod/module/footer" .}}
+
+</body>
+</html>
+{{end}}

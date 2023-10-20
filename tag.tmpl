@@ -1,0 +1,51 @@
+{{- define "sonic_theme_paper_mod/tag" -}}
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head>
+<title>{{.tag.Name}} - {{ .blog_title }}</title>
+{{ template "sonic_theme_paper_mod/module/head" .}}
+</head>
+
+<body class="list" id="top">
+
+{{template "sonic_theme_paper_mod/module/header" .}}
+
+<main class="main"> 
+
+<header class="page-header">
+  <h1>
+    {{.tag.Name}}
+  </h1>
+</header>
+
+{{ template "sonic_theme_paper_mod/module/post-entry" . }}
+
+<footer class="page-footer">
+{{if (gt .posts.Pages 1)}}
+{{$pagination:=(tagPostsPagination .posts.PageNum .posts.Pages 3)}}
+  {{if $pagination.HasPrev}}
+    <nav class="pagination">
+        <a class="prev" href="{{$pagination.PrevPageFullPath}}">
+          « Prev 
+        </a>
+      </nav>
+  {{end}}
+  {{if $pagination.HasNext}}
+  <nav class="pagination">
+    <a class="next" href="{{$pagination.NextPageFullPath}}">
+        Next » 
+    </a>
+  </nav>
+  {{end}}
+{{end}}
+</footer>
+
+</main>
+    
+{{template "sonic_theme_paper_mod/module/footer" .}}
+
+</body>
+
+</html>
+{{end}}

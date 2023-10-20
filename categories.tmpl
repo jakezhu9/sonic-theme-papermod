@@ -1,0 +1,38 @@
+{{- define "sonic_theme_paper_mod/categories" -}}
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head>
+<title>Categories - {{ .blog_title }}</title>
+{{ template "sonic_theme_paper_mod/module/head" .}}
+</head>
+
+<body class="list" id="top">
+
+{{template "sonic_theme_paper_mod/module/header" .}}
+
+<main class="main"> 
+
+<header class="page-header">
+  <h1>
+    Categories
+  </h1>
+</header>
+
+<ul class="terms-tags">
+{{$categories:=listCategory}}
+{{range $category:=$categories}}
+    <li>
+        <a href="{{ $category.FullPath }}">{{ $category.Name }}<sup><strong><sup>{{ $category.PostCount }}</sup></strong></sup> </a>
+    </li>
+{{end}}
+</ul>
+
+</main>
+    
+{{template "sonic_theme_paper_mod/module/footer" .}}
+
+</body>
+
+</html>
+{{end}}

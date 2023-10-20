@@ -1,0 +1,65 @@
+settings:
+  label: Setting
+  items:
+    header_title:
+      name: header_title
+      label: blog title in header
+      type: text
+      default: "PaperMod"
+    home_info_title:
+      name: home_info_title
+      label: home info title
+      type: text
+      default: "PaperMod"
+    home_info_content:
+      name: home_info_content
+      label: home info content, support HTML
+      type: textarea
+      default: >
+        <p>Welcome to demo of sonic theme PaperMod.</p>
+        <ul>
+        <li><strong>PaperMod</strong> is a simple but fast and responsive theme with useful feature-set that enhances UX.</li>
+        <li>Do give a 🌟 on <a href="https://github.com/jakezhu9/sonic-theme-papermod">Github</a> !</li>
+        </ul>
+    copyright:
+      name: copyright
+      label: copyright in footer, support HTML
+      type: textarea
+      default: >
+        <span>&copy; 2023 <a href="/">PaperMod-Demo</a></span>
+        <span>
+            Powered by
+            <a href="https://github.com/go-sonic/sonic" rel="noopener noreferrer" target="_blank">Sonic</a> &
+            <a href="https://github.com/jakezhu9/sonic-theme-papermod" rel="noopener" target="_blank">PaperMod</a>
+        </span>
+
+sns:
+  label: SNS
+  items:
+    rss:
+      name: rss
+      label: RSS
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: Show
+        - value: false
+          label: Hide
+    github:
+      name: github
+      label: GitHub
+      type: text
+    twitter:
+      name: twitter
+      label: Twitter
+      type: text
+    email:
+      name: email
+      label: Email
+      type: text
+    qq:
+      name: qq
+      label: QQ
+      type: text

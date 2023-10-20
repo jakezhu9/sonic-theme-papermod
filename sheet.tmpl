@@ -1,0 +1,30 @@
+{{- define "sonic_theme_paper_mod/sheet" -}}
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head>
+<title>{{.sheet.Title}} - {{ .blog_title }}</title>
+{{ template "sonic_theme_paper_mod/module/head" .}}
+</head>
+
+<body class="list" id="top">
+
+{{template "sonic_theme_paper_mod/module/header" .}}
+
+<main class="main">
+
+<div class="post-content">
+    {{noescape .sheet.Content}}
+</div>
+
+<footer class="post-footer">
+</footer>
+
+</article>
+</main>
+
+{{template "sonic_theme_paper_mod/module/footer" .}}
+
+</body>
+</html>
+{{end}}

@@ -1,0 +1,108 @@
+{{- define "sonic_theme_paper_mod/index" -}}
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head>
+<title>Home - {{ .blog_title }}</title>
+{{ template "sonic_theme_paper_mod/module/head" .}}
+</head>
+
+<body class="list" id="top">
+
+{{template "sonic_theme_paper_mod/module/header" .}}
+
+<main class="main"> 
+{{ if not .posts.PageNum }}
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>
+        {{ .settings.home_info_title }}
+        </h1>
+    </header>
+    <div class="entry-content">
+        {{ noescape .settings.home_info_content }}
+</div>
+<footer class="entry-footer">
+<div class="social-icons">
+{{ if  .settings.github }}
+<a href="{{ .settings.github}}" target="_blank" title="Github">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path
+d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+</path>
+</svg>
+</a>
+{{ end }}
+{{ if  .settings.twitter }}
+<a href="{{ .settings.twitter}}" target="_blank" title="Twitter">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path
+d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+</path>
+</svg>
+</a>
+{{ end }}
+{{ if  .settings.email }}
+<a href="mailto:{{ .settings.email}}" target="_blank" title="Email">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+<polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</a>
+{{ end }}
+{{ if  .settings.qq }}
+<a href="{{ .settings.qq}}" target="_blank" title="QQ">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path transform="scale(0.04) translate(75 40)" stroke-width="50"
+    d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z">
+</path>
+</svg>
+</a>
+{{ end }}
+{{ if  .settings.rss }}
+<a href="atom.xml" target="_blank" title="RSS">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 11a9 9 0 0 1 9 9" />
+<path d="M4 4a16 16 0 0 1 16 16" />
+<circle cx="5" cy="19" r="1" />
+</svg>
+</a>
+{{ end }}
+</div>
+</footer>
+</article>
+{{ end }}
+{{ template "sonic_theme_paper_mod/module/post-entry" . }}
+
+<footer class="page-footer">
+{{if (gt .posts.Pages 1)}}
+{{$pagination:=(indexPagination .posts.PageNum .posts.Pages 3)}}
+  {{if $pagination.HasPrev}}
+    <nav class="pagination">
+        <a class="prev" href="{{$pagination.PrevPageFullPath}}">
+          « Prev 
+        </a>
+      </nav>
+  {{end}}
+  {{if $pagination.HasNext}}
+  <nav class="pagination">
+    <a class="next" href="{{$pagination.NextPageFullPath}}">
+        Next » 
+    </a>
+  </nav>
+  {{end}}
+{{end}}
+</footer>
+</main>
+    
+{{template "sonic_theme_paper_mod/module/footer" .}}
+
+</body>
+
+</html>
+{{end}}
