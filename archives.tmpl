@@ -21,14 +21,20 @@
 
 <div class="archive-posts">
     {{range $archive:=.archives}}
-    {{range $post:=$archive.Posts}}
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">{{$post.Title}}
-        </h3>
-        <div class="archive-meta"><span>{{unix_milli_time_format "2006-01-02 15:04:05" $post.CreateTime}}</span>  ·  {{ $post.WordCount }} words </div>
-        <a class="entry-link" href="{{$post.FullPath}}"></a>
-      </div>
-    {{end}}
+    <div class="archive-year">
+        <h2 class="archive-year-header">
+            {{$archive.Year}}
+            <sup class="archive-count">{{len $archive.Posts}}</sup>
+        </h2>
+        {{range $post:=$archive.Posts}}
+          <div class="archive-entry">
+            <h3 class="archive-entry-title">{{$post.Title}}
+            </h3>
+            <div class="archive-meta"><span>{{unix_milli_time_format "2006-01-02 15:04:05" $post.CreateTime}}</span>  ·  {{ $post.WordCount }} words </div>
+            <a class="entry-link" href="{{$post.FullPath}}"></a>
+          </div>
+        {{end}}
+    </div>
     {{end}}
 </div>
 
